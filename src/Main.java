@@ -23,20 +23,29 @@ public class Main {
         System.out.println("Price: £" + nvidia.price);
         System.out.println("Previous Year Return: " + nvidia.previousYearReturn + "%");
 
-        Portfolio portfolio = new Portfolio();
-
-        portfolio.cash = 10000.00;
+        Portfolio portfolio = new Portfolio(10000.00);
 
         Holding appleHolding = new Holding(apple, 2.5);
-        portfolio.holding = appleHolding;
+        portfolio.holdings.add(appleHolding);
 
-        System.out.println("Holding: " + appleHolding.stock.name);
-        System.out.println("Shares: " + appleHolding.quantity);
+        Holding microsoftHolding = new Holding(microsoft, 1.5);
+        portfolio.holdings.add(microsoftHolding);
+
+        Holding nvidiaHolding = new Holding(nvidia, 3.0);
+        portfolio.holdings.add(nvidiaHolding);
+
+        System.out.println();
+        System.out.println("Number of Holdings: " + portfolio.holdings.size());
+        for (int i=0; i< portfolio.holdings.size(); i++){
+            Holding currentHolding = portfolio.holdings.get(i);
+
+            System.out.println("Stock: " + currentHolding.stock.name);
+            System.out.println("Shares: " + currentHolding.quantity);
+        }
 
         System.out.println();
         System.out.println("Portfolio Cash: £" + portfolio.cash);
-        System.out.println("Portfolio Holding: " + portfolio.holding.stock.name);
-        System.out.println("Portfolio Shares: " + portfolio.holding.quantity);
+
 
 
     }
