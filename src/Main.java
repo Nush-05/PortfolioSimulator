@@ -23,7 +23,12 @@ public class Main {
         System.out.println("Price: £" + nvidia.price);
         System.out.println("Previous Year Return: " + nvidia.previousYearReturn + "%");
 
+        Portfolio portfolio = new Portfolio();
 
+        portfolio.cash = 10000.00;
+
+        System.out.println();
+        System.out.println("Portfolio Cash: £" + portfolio.cash);
 
     }
 }
