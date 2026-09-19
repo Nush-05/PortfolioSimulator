@@ -27,15 +27,16 @@ public class Main {
 
         portfolio.cash = 10000.00;
 
-        Holding appleHolding = new Holding();
-        appleHolding.stock = apple;
-        appleHolding.quantity = 2.5;
+        Holding appleHolding = new Holding(apple, 2.5);
+        portfolio.holding = appleHolding;
 
         System.out.println("Holding: " + appleHolding.stock.name);
         System.out.println("Shares: " + appleHolding.quantity);
 
         System.out.println();
         System.out.println("Portfolio Cash: £" + portfolio.cash);
+        System.out.println("Portfolio Holding: " + portfolio.holding.stock.name);
+        System.out.println("Portfolio Shares: " + portfolio.holding.quantity);
 
 
     }
