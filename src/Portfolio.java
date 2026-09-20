@@ -8,4 +8,13 @@ public class Portfolio {
         this.cash = cash;
         holdings = new ArrayList<>();
     }
+
+    void buy(Stock stock, double quantity){
+        double cost = stock.price * quantity;
+
+        cash = cash - cost;
+
+        Holding holding = new Holding(stock, quantity);
+        holdings.add(holding);
+    }
 }
