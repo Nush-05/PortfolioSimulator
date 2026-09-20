@@ -15,8 +15,19 @@ public class Portfolio {
         if (cost <= cash) {
             cash = cash - cost;
 
-            Holding holding = new Holding(stock, quantity);
-            holdings.add(holding);
+            boolean found = false;
+
+            for (Holding currentHolding : holdings){
+                if (currentHolding.stock == stock) {
+                    currentHolding.quantity = currentHolding.quantity + quantity;
+                    found = true;
+                }
+            }
+
+            if (!found){
+                Holding holding = new Holding(stock, quantity);
+                holdings.add(holding);
+            }
 
             System.out.println("Bought " + quantity + " shares of " + stock.name);
         } else {

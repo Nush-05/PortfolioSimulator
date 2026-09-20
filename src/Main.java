@@ -26,9 +26,9 @@ public class Main {
         Portfolio portfolio = new Portfolio(10000.00);
 
         portfolio.buy(apple, 2.5);
+        portfolio.buy(apple, 1.5);
         portfolio.buy(microsoft, 1.5);
         portfolio.buy(nvidia, 3.0);
-        portfolio.buy(nvidia, 100);
 
         System.out.println();
         System.out.println("Number of Holdings: " + portfolio.holdings.size());
