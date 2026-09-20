@@ -36,12 +36,26 @@ public class Main {
 
         System.out.println();
         System.out.println("Number of Holdings: " + portfolio.holdings.size());
+
+        double totalInvested = 0;
         for (int i=0; i< portfolio.holdings.size(); i++){
             Holding currentHolding = portfolio.holdings.get(i);
 
+            double value = currentHolding.stock.price * currentHolding.quantity;
+
+            totalInvested = totalInvested + value;
+
             System.out.println("Stock: " + currentHolding.stock.name);
             System.out.println("Shares: " + currentHolding.quantity);
+            System.out.println("Value: £" + value);
         }
+
+        System.out.println();
+        System.out.println("Total Invested: £" + totalInvested);
+
+        double totalPortfolioValue = portfolio.cash + totalInvested;
+
+        System.out.println("Total Portfolio Value: £" + totalPortfolioValue);
 
         System.out.println();
         System.out.println("Portfolio Cash: £" + portfolio.cash);
