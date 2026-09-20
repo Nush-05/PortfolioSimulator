@@ -12,9 +12,16 @@ public class Portfolio {
     void buy(Stock stock, double quantity){
         double cost = stock.price * quantity;
 
-        cash = cash - cost;
+        if (cost <= cash) {
+            cash = cash - cost;
 
-        Holding holding = new Holding(stock, quantity);
-        holdings.add(holding);
+            Holding holding = new Holding(stock, quantity);
+            holdings.add(holding);
+
+            System.out.println("Bought " + quantity + " shares of " + stock.name);
+        } else {
+            System.out.println("Not enough cash to buy " + quantity + " shares of " + stock.name);
+        }
+
     }
 }

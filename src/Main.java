@@ -28,6 +28,7 @@ public class Main {
         portfolio.buy(apple, 2.5);
         portfolio.buy(microsoft, 1.5);
         portfolio.buy(nvidia, 3.0);
+        portfolio.buy(nvidia, 100);
 
         System.out.println();
         System.out.println("Number of Holdings: " + portfolio.holdings.size());
