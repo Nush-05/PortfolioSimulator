@@ -30,7 +30,7 @@ public class Main {
         portfolio.buy(microsoft, 1.5);
         portfolio.buy(nvidia, 3.0);
 
-        portfolio.sell(apple, 4.0);
+        portfolio.sell(apple, 1.5);
 
         System.out.println();
         System.out.println("Number of Holdings: " + portfolio.holdings.size());
@@ -57,6 +57,16 @@ public class Main {
 
         System.out.println();
         System.out.println("Portfolio Cash: £" + portfolio.cash);
+
+        System.out.println();
+        System.out.println("Transaction History:");
+
+        for (Transaction transaction : portfolio.transactions) {
+            System.out.println(transaction.type + " "
+                    + transaction.stock.name + " "
+                    + transaction.quantity + " shares at £"
+                    + transaction.price);
+        }
 
 
 

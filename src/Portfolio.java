@@ -3,10 +3,12 @@ import java.util.ArrayList;
 public class Portfolio {
     double cash;
     ArrayList<Holding> holdings;
+    ArrayList<Transaction> transactions;
 
     Portfolio(double cash) {
         this.cash = cash;
         holdings = new ArrayList<>();
+        transactions = new ArrayList<>();
     }
 
     void buy(Stock stock, double quantity) {
@@ -29,6 +31,9 @@ public class Portfolio {
                 holdings.add(holding);
             }
 
+            Transaction transaction = new Transaction("BUY", stock, quantity, stock.price);
+            transactions.add(transaction);
+
             System.out.println("Bought " + quantity + " shares of " + stock.name);
         } else {
             System.out.println("Not enough cash to buy " + quantity + " shares of " + stock.name);
@@ -50,6 +55,9 @@ public class Portfolio {
                     if (currentHolding.quantity == 0) {
                         holdings.remove(i);
                     }
+
+                    Transaction transaction = new Transaction("SELL", stock, quantity, stock.price);
+                    transactions.add(transaction);
 
                     System.out.println("Sold " + quantity + " shares of " + stock.name);
                 } else {
