@@ -4,12 +4,12 @@ public class Portfolio {
     double cash;
     ArrayList<Holding> holdings;
 
-    Portfolio(double cash){
+    Portfolio(double cash) {
         this.cash = cash;
         holdings = new ArrayList<>();
     }
 
-    void buy(Stock stock, double quantity){
+    void buy(Stock stock, double quantity) {
         double cost = stock.price * quantity;
 
         if (cost <= cash) {
@@ -17,14 +17,14 @@ public class Portfolio {
 
             boolean found = false;
 
-            for (Holding currentHolding : holdings){
+            for (Holding currentHolding : holdings) {
                 if (currentHolding.stock == stock) {
                     currentHolding.quantity = currentHolding.quantity + quantity;
                     found = true;
                 }
             }
 
-            if (!found){
+            if (!found) {
                 Holding holding = new Holding(stock, quantity);
                 holdings.add(holding);
             }
@@ -33,6 +33,29 @@ public class Portfolio {
         } else {
             System.out.println("Not enough cash to buy " + quantity + " shares of " + stock.name);
         }
+    }
 
+    void sell(Stock stock, double quantity) {
+
+        for (int i = 0; i < holdings.size(); i++) {
+            Holding currentHolding = holdings.get(i);
+
+            if (currentHolding.stock == stock) {
+                if (quantity <= currentHolding.quantity) {
+                    currentHolding.quantity = currentHolding.quantity - quantity;
+
+                    double saleValue = stock.price * quantity;
+                    cash = cash + saleValue;
+
+                    if (currentHolding.quantity == 0) {
+                        holdings.remove(i);
+                    }
+
+                    System.out.println("Sold " + quantity + " shares of " + stock.name);
+                } else {
+                    System.out.println("Not enough shares to sell.");
+                }
+            }
+        }
     }
 }
