@@ -41,7 +41,7 @@ public class Main {
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
 
-            if (choice == 1) {
+            if (choice == 1){
                 System.out.println();
                 System.out.println("Number of Holdings: " + portfolio.holdings.size());
 
@@ -67,7 +67,7 @@ public class Main {
                 System.out.println("Portfolio Cash: £" + portfolio.cash);
                 System.out.println("Profit/Loss: £" + profitLoss);
             }
-            if (choice == 2) {
+            if (choice == 2){
                 System.out.println();
                 System.out.println("Select a stock:");
                 System.out.println("1. Apple");
@@ -96,7 +96,35 @@ public class Main {
                 }
 
             }
-            if (choice == 4) {
+            if (choice == 3){
+                System.out.println();
+                System.out.println("Select a stock:");
+                System.out.println("1. Apple");
+                System.out.println("2. Microsoft");
+                System.out.println("3. NVIDIA");
+
+                System.out.print("Enter your choice: ");
+                int stockChoice = scanner.nextInt();
+                Stock selectedStock = null;
+
+                if (stockChoice == 1) {
+                    selectedStock = apple;
+                } else if (stockChoice == 2) {
+                    selectedStock = microsoft;
+                } else if (stockChoice == 3) {
+                    selectedStock = nvidia;
+                } else {
+                    System.out.println("Invalid stock choice.");
+                }
+
+                if (selectedStock != null) {
+                    System.out.print("Enter quantity: ");
+                    double quantity = scanner.nextDouble();
+
+                    portfolio.sell(selectedStock, quantity);
+                }
+            }
+            if (choice == 4){
                 System.out.println("Transaction History:");
 
                 double totalBought = 0;
@@ -122,7 +150,7 @@ public class Main {
                 System.out.println("Total Bought: £" + totalBought);
                 System.out.println("Total Sold: £" + totalSold);
             }
-            if (choice == 5) {
+            if (choice == 5){
                 System.out.println("Goodbye!");
                 running = false;
             }
