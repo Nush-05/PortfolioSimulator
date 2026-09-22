@@ -63,12 +63,28 @@ public class Main {
         System.out.println();
         System.out.println("Transaction History:");
 
+        double totalBought = 0;
+        double totalSold = 0;
         for (Transaction transaction : portfolio.transactions) {
+            double transactionValue = transaction.quantity * transaction.price;
+
+            if (transaction.type.equals("BUY")){
+                totalBought = totalBought + transactionValue;
+            }
+
+            if (transaction.type.equals("SELL")){
+                totalSold = totalSold + transactionValue;
+            }
+
             System.out.println(transaction.type + " "
                     + transaction.stock.name + " "
                     + transaction.quantity + " shares at £"
                     + transaction.price);
         }
+
+        System.out.println();
+        System.out.println("Total Bought: £" + totalBought);
+        System.out.println("Total Sold: £" + totalSold);
 
 
 
