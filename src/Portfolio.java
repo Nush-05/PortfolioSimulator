@@ -2,11 +2,13 @@ import java.util.ArrayList;
 
 public class Portfolio {
     double cash;
+    double startingCash;
     ArrayList<Holding> holdings;
     ArrayList<Transaction> transactions;
 
     Portfolio(double cash) {
         this.cash = cash;
+        startingCash = cash;
         holdings = new ArrayList<>();
         transactions = new ArrayList<>();
     }

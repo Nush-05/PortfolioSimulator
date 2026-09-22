@@ -48,15 +48,15 @@ public class Main {
             System.out.println("Value: £" + value);
         }
 
+        double totalPortfolioValue = portfolio.cash + totalInvested;
+        double profitLoss = totalPortfolioValue - portfolio.startingCash;
+
         System.out.println();
         System.out.println("Total Invested: £" + totalInvested);
-
-        double totalPortfolioValue = portfolio.cash + totalInvested;
-
         System.out.println("Total Portfolio Value: £" + totalPortfolioValue);
-
-        System.out.println();
         System.out.println("Portfolio Cash: £" + portfolio.cash);
+        System.out.println("Profit/Loss: £" + profitLoss);
+        System.out.println();
 
         System.out.println();
         System.out.println("Transaction History:");
