@@ -32,27 +32,29 @@ public class Main {
 
         portfolio.sell(apple, 1.5);
 
+        apple.updatePrice(240.00);
+
         System.out.println();
         System.out.println("Number of Holdings: " + portfolio.holdings.size());
 
-        double totalInvested = 0;
+        double totalHoldingsValue = 0;
         for (int i=0; i< portfolio.holdings.size(); i++){
             Holding currentHolding = portfolio.holdings.get(i);
 
             double value = currentHolding.stock.price * currentHolding.quantity;
 
-            totalInvested = totalInvested + value;
+            totalHoldingsValue = totalHoldingsValue + value;
 
             System.out.println("Stock: " + currentHolding.stock.name);
             System.out.println("Shares: " + currentHolding.quantity);
             System.out.println("Value: £" + value);
         }
 
-        double totalPortfolioValue = portfolio.cash + totalInvested;
+        double totalPortfolioValue = portfolio.cash + totalHoldingsValue;
         double profitLoss = totalPortfolioValue - portfolio.startingCash;
 
         System.out.println();
-        System.out.println("Total Invested: £" + totalInvested);
+        System.out.println("Total Holdings Value: £" + totalHoldingsValue);
         System.out.println("Total Portfolio Value: £" + totalPortfolioValue);
         System.out.println("Portfolio Cash: £" + portfolio.cash);
         System.out.println("Profit/Loss: £" + profitLoss);

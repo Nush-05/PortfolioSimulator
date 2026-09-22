@@ -10,4 +10,8 @@ public class Stock {
         this.price = price;
         this.previousYearReturn = previousYearReturn;
     }
+
+    void updatePrice(double newPrice) {
+        price = newPrice;
+    }
 }
