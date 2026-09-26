@@ -92,9 +92,14 @@ public class Main {
 
                         if (selectedStock != null) {
                             System.out.print("Enter quantity: ");
-                            double quantity = scanner.nextDouble();
+                            if (scanner.hasNextDouble()) {
+                                double quantity = scanner.nextDouble();
 
-                            portfolio.buy(selectedStock, quantity);
+                                portfolio.buy(selectedStock, quantity);
+                            } else {
+                                System.out.println("Invalid quantity.");
+                                scanner.next();
+                            }
                         }
                     }else{
                         System.out.println("Invalid stock choice.");
@@ -126,9 +131,14 @@ public class Main {
 
                         if (selectedStock != null) {
                             System.out.print("Enter quantity: ");
-                            double quantity = scanner.nextDouble();
+                            if (scanner.hasNextDouble()) {
+                                double quantity = scanner.nextDouble();
 
-                            portfolio.sell(selectedStock, quantity);
+                                portfolio.sell(selectedStock, quantity);
+                            } else {
+                                System.out.println("Invalid quantity.");
+                                scanner.next();
+                            }
                         }
                     }else{
                         System.out.println("Invalid stock choice.");
