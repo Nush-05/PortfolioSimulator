@@ -75,27 +75,33 @@ public class Main {
                     System.out.println("3. NVIDIA");
 
                     System.out.print("Enter your choice: ");
-                    int stockChoice = scanner.nextInt();
-                    Stock selectedStock = null;
 
-                    if (stockChoice == 1) {
-                        selectedStock = apple;
-                    } else if (stockChoice == 2) {
-                        selectedStock = microsoft;
-                    } else if (stockChoice == 3) {
-                        selectedStock = nvidia;
-                    } else {
+                    if(scanner.hasNextInt()) {
+                        int stockChoice = scanner.nextInt();
+                        Stock selectedStock = null;
+
+                        if (stockChoice == 1) {
+                            selectedStock = apple;
+                        } else if (stockChoice == 2) {
+                            selectedStock = microsoft;
+                        } else if (stockChoice == 3) {
+                            selectedStock = nvidia;
+                        } else {
+                            System.out.println("Invalid stock choice.");
+                        }
+
+                        if (selectedStock != null) {
+                            System.out.print("Enter quantity: ");
+                            double quantity = scanner.nextDouble();
+
+                            portfolio.buy(selectedStock, quantity);
+                        }
+                    }else{
                         System.out.println("Invalid stock choice.");
+                        scanner.next();
                     }
 
-                    if (selectedStock != null) {
-                        System.out.print("Enter quantity: ");
-                        double quantity = scanner.nextDouble();
-
-                        portfolio.buy(selectedStock, quantity);
-                    }
-
-                }else if (choice == 3){
+                }else if (choice == 3) {
                     System.out.println();
                     System.out.println("Select a stock:");
                     System.out.println("1. Apple");
@@ -103,24 +109,30 @@ public class Main {
                     System.out.println("3. NVIDIA");
 
                     System.out.print("Enter your choice: ");
-                    int stockChoice = scanner.nextInt();
-                    Stock selectedStock = null;
 
-                    if (stockChoice == 1) {
-                        selectedStock = apple;
-                    } else if (stockChoice == 2) {
-                        selectedStock = microsoft;
-                    } else if (stockChoice == 3) {
-                        selectedStock = nvidia;
-                    } else {
+                    if (scanner.hasNextInt()) {
+                        int stockChoice = scanner.nextInt();
+                        Stock selectedStock = null;
+
+                        if (stockChoice == 1) {
+                            selectedStock = apple;
+                        } else if (stockChoice == 2) {
+                            selectedStock = microsoft;
+                        } else if (stockChoice == 3) {
+                            selectedStock = nvidia;
+                        } else {
+                            System.out.println("Invalid stock choice.");
+                        }
+
+                        if (selectedStock != null) {
+                            System.out.print("Enter quantity: ");
+                            double quantity = scanner.nextDouble();
+
+                            portfolio.sell(selectedStock, quantity);
+                        }
+                    }else{
                         System.out.println("Invalid stock choice.");
-                    }
-
-                    if (selectedStock != null) {
-                        System.out.print("Enter quantity: ");
-                        double quantity = scanner.nextDouble();
-
-                        portfolio.sell(selectedStock, quantity);
+                        scanner.next();
                     }
                 }else if (choice == 4){
                     System.out.println("Transaction History:");
