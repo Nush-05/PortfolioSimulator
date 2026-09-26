@@ -37,6 +37,7 @@ public class Main {
             System.out.println("3. Sell Stock");
             System.out.println("4. View Transactions");
             System.out.println("5. Exit");
+            System.out.println("6. Update Stock Price");
 
             System.out.print("Enter your choice: ");
             if (scanner.hasNextInt()) {
@@ -68,6 +69,7 @@ public class Main {
                     System.out.printf("Total Portfolio Value: £%,.2f%n", totalPortfolioValue);
                     System.out.printf("Portfolio Cash: £%,.2f%n", portfolio.cash);
                     System.out.printf("Profit/Loss: £%,.2f%n", profitLoss);
+
                 }else if (choice == 2){
                     System.out.println();
                     System.out.println("Select a stock:");
@@ -145,6 +147,7 @@ public class Main {
                         System.out.println("Invalid stock choice.");
                         scanner.next();
                     }
+
                 }else if (choice == 4){
                     System.out.println("Transaction History:");
 
@@ -171,31 +174,61 @@ public class Main {
                     System.out.println();
                     System.out.printf("Total Bought: £%,.2f%n", totalBought);
                     System.out.printf("Total Sold: £%,.2f%n", totalSold);
+
                 }else if (choice == 5){
                     System.out.println("Goodbye!");
                     running = false;
+
+                }else if (choice == 6) {
+                    System.out.println();
+                    System.out.println("Select a stock:");
+                    System.out.println("1. Apple");
+                    System.out.println("2. Microsoft");
+                    System.out.println("3. NVIDIA");
+
+                    System.out.print("Enter your choice: ");
+
+                    if (scanner.hasNextInt()) {
+                        int stockChoice = scanner.nextInt();
+                        Stock selectedStock = null;
+                        if (stockChoice == 1) {
+                            selectedStock = apple;
+                        } else if (stockChoice == 2) {
+                            selectedStock = microsoft;
+                        } else if (stockChoice == 3) {
+                            selectedStock = nvidia;
+                        } else {
+                            System.out.println("Invalid stock choice.");
+                        }
+
+                        if (selectedStock != null) {
+                            System.out.print("Enter new price: £");
+
+                            if (scanner.hasNextDouble()) {
+                                double newPrice = scanner.nextDouble();
+
+                                selectedStock.updatePrice(newPrice);
+
+                                System.out.printf("Updated %s price to £%,.2f%n",
+                                        selectedStock.name,
+                                        selectedStock.price);
+                            } else {
+                                System.out.println("Invalid price.");
+                                scanner.next();
+                            }
+                        }
+                    } else {
+                        System.out.println("Invalid stock choice.");
+                        scanner.next();
+                    }
                 }else{
                     System.out.println("Invalid menu choice.");
+
                 }
             }else{
                 System.out.println("Invalid menu choice.");
                 scanner.next();
             }
-
         }
-
-        //portfolio.buy(apple, 2.5);
-        //portfolio.buy(apple, 1.5);
-        //portfolio.buy(microsoft, 1.5);
-        //portfolio.buy(nvidia, 3.0);
-
-        //portfolio.sell(apple, 1.5);
-
-        apple.updatePrice(240.00);
-
-
-
-
-
     }
 }
