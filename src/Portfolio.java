@@ -14,6 +14,11 @@ public class Portfolio {
     }
 
     void buy(Stock stock, double quantity) {
+        if (quantity <= 0) {
+            System.out.println("Quantity must be greater than 0.");
+            return;
+        }
+
         double cost = stock.price * quantity;
 
         if (cost <= cash) {
@@ -43,6 +48,10 @@ public class Portfolio {
     }
 
     void sell(Stock stock, double quantity) {
+        if (quantity <= 0) {
+            System.out.println("Quantity must be greater than 0.");
+            return;
+        }
 
         for (int i = 0; i < holdings.size(); i++) {
             Holding currentHolding = holdings.get(i);
