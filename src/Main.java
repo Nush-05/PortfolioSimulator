@@ -56,17 +56,18 @@ public class Main {
 
                         System.out.println("Stock: " + currentHolding.stock.name);
                         System.out.println("Shares: " + currentHolding.quantity);
-                        System.out.println("Value: £" + value);
+                        System.out.printf("Current Price: £%,.2f%n", currentHolding.stock.price);
+                        System.out.printf("Value: £%,.2f%n", value);
                     }
 
                     double totalPortfolioValue = portfolio.cash + totalHoldingsValue;
                     double profitLoss = totalPortfolioValue - portfolio.startingCash;
 
                     System.out.println();
-                    System.out.println("Total Holdings Value: £" + totalHoldingsValue);
-                    System.out.println("Total Portfolio Value: £" + totalPortfolioValue);
-                    System.out.println("Portfolio Cash: £" + portfolio.cash);
-                    System.out.println("Profit/Loss: £" + profitLoss);
+                    System.out.printf("Total Holdings Value: £%,.2f%n", totalHoldingsValue);
+                    System.out.printf("Total Portfolio Value: £%,.2f%n", totalPortfolioValue);
+                    System.out.printf("Portfolio Cash: £%,.2f%n", portfolio.cash);
+                    System.out.printf("Profit/Loss: £%,.2f%n", profitLoss);
                 }else if (choice == 2){
                     System.out.println();
                     System.out.println("Select a stock:");
@@ -160,15 +161,16 @@ public class Main {
                             totalSold = totalSold + transactionValue;
                         }
 
-                        System.out.println(transaction.type + " "
-                                + transaction.stock.name + " "
-                                + transaction.quantity + " shares at £"
-                                + transaction.price);
+                        System.out.printf("%s %s %.1f shares at £%,.2f%n",
+                                transaction.type,
+                                transaction.stock.name,
+                                transaction.quantity,
+                                transaction.price);
                     }
 
                     System.out.println();
-                    System.out.println("Total Bought: £" + totalBought);
-                    System.out.println("Total Sold: £" + totalSold);
+                    System.out.printf("Total Bought: £%,.2f%n", totalBought);
+                    System.out.printf("Total Sold: £%,.2f%n", totalSold);
                 }else if (choice == 5){
                     System.out.println("Goodbye!");
                     running = false;
